@@ -1,0 +1,31 @@
+apply plugin: 'application'
+mainClassName = 'com.d2fn.sumi.AppMain'
+
+apply plugin: 'java'
+sourceCompatibility = 1.9
+
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.flowpowered:flow-noise:1.0.0'
+    compile 'com.github.spullara.cli-parser:cli-parser:1.1'
+    compile 'org.processing:core:3.3.6'
+    testCompile 'junit:junit:4.12'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.d2fn.sumi.AppMain'
+    }
+}
+
+run {
+    if(project.hasProperty('args')) {
+        args findProperty('args').tokenize(" ")
+    }
+}
+
