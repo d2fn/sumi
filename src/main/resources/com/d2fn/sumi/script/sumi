@@ -1,4 +1,8 @@
 #!/bin/sh
 
+#
+# sumi bootstrap script installed centrally
+#
+
 BASEDIR=$(dirname "$0")
 java -jar $BASEDIR/sumi.jar $@

@@ -1,6 +1,7 @@
 package com.d2fn.sumi;
 
 import com.d2fn.sumi.command.Command;
+import com.d2fn.sumi.command.CommandResponse;
 import com.d2fn.sumi.command.Create;
 import com.d2fn.sumi.command.Run;
 
@@ -12,24 +13,19 @@ public class Sumi {
 
     public static void main(String[] args) throws Exception {
 
-        if(args.length == 0) {
-            usage();
-            System.exit(1);
-        }
+        // todo -- load from ~/.sumi
+        final SumiSettings sumi = new SumiSettings("/home/d/bin/sumi", "sumi.jar");
 
         final String commandName= args[0];
 
-        try {
-            final CommandType commandType = CommandType.valueOf(commandName);
-            final Constructor<? extends Command> constructor =
-                    commandType.getCommandClass().getConstructor(String[].class);
-            final String[] commandArgs = tail(args);
-            final Command command = constructor.newInstance(new Object[] { commandArgs });
-            command.run();
-        }
-        catch(Exception e) {
-            usage();
-            System.exit(1);
+        final CommandType commandType = CommandType.valueOf(commandName);
+        final Constructor<? extends Command> constructor =
+                commandType.getCommandClass().getConstructor(SumiSettings.class, String[].class);
+        final String[] commandArgs = tail(args);
+        final Command command = constructor.newInstance(sumi, commandArgs);
+        final CommandResponse resp = command.run();
+        if(resp.isError()) {
+            resp.printError(System.err);
         }
     }
 
@@ -44,14 +40,14 @@ public class Sumi {
 
         create {
             @Override
-            Class getCommandClass() {
+            Class<? extends Command> getCommandClass() {
                 return Create.class;
             }
         },
 
         run {
             @Override
-            Class getCommandClass() {
+            Class<? extends Command> getCommandClass() {
                 return Run.class;
             }
         }

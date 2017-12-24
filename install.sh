@@ -1,10 +1,11 @@
 #!/bin/sh
 
-./gradlew clean jar
+BASEDIR=$(dirname $0)
+$BASEDIR/gradlew -p $BASEDIR clean jar
 
 # vars
-build_dir="./build"
-src_dir="./src/main"
+build_dir="$BASEDIR/build"
+src_dir="$BASEDIR/src/main"
 script_dir="$src_dir/resources/com/d2fn/sumi/script"
 template_dir="$src_dir/resources/com/d2fn/sumi/template"
 sumi_run_script_name="sumi"
@@ -26,9 +27,6 @@ cp $src_sumi_jar $tmp_install_dir/$install_jar_name
 cp $script_dir/$sumi_run_script_name $tmp_install_dir
 chmod u+x $tmp_install_dir/$sumi_run_script_name
 
-ls -alh $tmp_install_dir
-
 # clear target install dir and install new copy of sumi
 rm -rf $install_dir
 mv $tmp_install_dir $install_dir
-
