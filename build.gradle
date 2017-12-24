@@ -1,5 +1,6 @@
 apply plugin: 'application'
-mainClassName = 'com.d2fn.sumi.AppMain'
+mainClassName = 'com.d2fn.sumi.Sumi'
+version = '0.1-SNAPSHOT'
 
 apply plugin: 'java'
 sourceCompatibility = 1.9
@@ -18,8 +19,18 @@ dependencies {
 }
 
 jar {
+    from(configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }) {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
     manifest {
-        attributes 'Main-Class': 'com.d2fn.sumi.AppMain'
+        attributes 'Implementation-Title': 'Sumi',
+                   'Implementation-Version': version,
+                   'Built-By': System.getProperty('user.name'),
+                   'Built-Date': new Date(),
+                   'Built-JDK': System.getProperty('java.version'),
+                   'Main-Class': mainClassName
     }
 }
 
