@@ -1,0 +1,39 @@
+# definitions
+cloud = com.d2fn.sumi.computer.Perlin
+xscale = com.d2fn.sumi.computer.Scale
+yscale = com.d2fn.sumi.computer.Scale
+r = com.d2fn.sumi.computer.Remap
+g = com.d2fn.sumi.computer.Remap
+b = com.d2fn.sumi.computer.Remap
+
+# configuration
+# env.blocksize <- 5
+
+# connections
+0.0025      -> xscale.coefficient
+env.x       -> xscale.value -> cloud.x
+0.0025      -> yscale.coefficient
+env.y       -> yscale.value -> cloud.y
+0           -> cloud.z
+"BEST"      -> cloud.quality
+1.5         -> cloud.frequency
+2.7         -> cloud.lacunarity
+6           -> cloud.octavecount
+0.3         -> cloud.persistence
+2           -> cloud.seed
+cloud.value -> r.value
+-1.0        -> r.domainlo
+ 1.0        -> r.domainhi
+0           -> r.rangelo
+255         -> r.rangehi
+cloud.value -> g.value
+-1.0        -> g.domainlo
+ 1.0        -> g.domainhi
+50          -> g.rangelo
+200         -> g.rangehi
+cloud.value -> b.value
+-1.0        -> b.domainlo
+ 1.0        -> b.domainhi
+128         -> b.rangelo
+255         -> b.rangehi
+
