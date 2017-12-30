@@ -1,0 +1,9 @@
+# definitions
+s2xy    = com.d2fn.sumi.computer.SequenceToXY
+scale   = com.d2fn.sumi.computer.Scale
+
+# connections
+1000          -> scale.coefficient
+env.time      -> scale.value -> s2xy.sequence
+env.height    -> s2xy.height
+env.width     -> s2xy.width

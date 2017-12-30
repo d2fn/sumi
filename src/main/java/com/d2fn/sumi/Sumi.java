@@ -14,7 +14,8 @@ public class Sumi {
     public static void main(String[] args) throws Exception {
 
         // todo -- load from ~/.sumi
-        final SumiSettings sumi = new SumiSettings("/home/d/bin/sumi", "sumi.jar");
+        final String sumiHome = System.getProperty("user.home") + "/bin/sumi";
+        final SumiSettings sumi = new SumiSettings(sumiHome, "sumi.jar");
 
         final String commandName= args[0];
 

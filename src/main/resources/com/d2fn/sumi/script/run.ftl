@@ -10,4 +10,4 @@ run_args='run ${sketchName}'
 echo "run_args => $run_args $sketch_args"
 
 BASEDIR=$(dirname $0)
-$BASEDIR/gradlew -p $BASEDIR run -Pargs="$run_args $sketch_args"
+$BASEDIR/gradlew -p $BASEDIR run -Pargs="$sketch_args"

@@ -26,9 +26,7 @@ jar {
         exclude "META-INF/*.RSA"
     }
     manifest {
-        attributes 'Implementation-Title': 'Sumi',
-                   'Implementation-Version': version,
-                   'Built-By': System.getProperty('user.name'),
+        attributes 'Built-By': System.getProperty('user.name'),
                    'Built-Date': new Date(),
                    'Built-JDK': System.getProperty('java.version'),
                    'Main-Class': mainClassName

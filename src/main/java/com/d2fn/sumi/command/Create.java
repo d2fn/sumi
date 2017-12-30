@@ -98,6 +98,7 @@ public class Create implements Command {
         }
         try {
             makeFileFromTemplate("template/sketch-java.ftl", sketchView.getJavaSketchPath());
+            makeFileFromTemplate("template/main-java.ftl", sketchView.getJavaMainPath());
         } catch (IOException e) {
             return CommandResponse.error("error loading sketch-java.ftl template", e);
         } catch (TemplateException e) {
@@ -111,29 +112,13 @@ public class Create implements Command {
         }
 
         // - create gradle wrapper
-        try {
-            Process p = Runtime.getRuntime().exec("gradle wrapper -p " + sketchView.getSketchDirectory());
-            int returnCode = p.waitFor();
-            if(returnCode != 0) {
-                String errorMsg = readStream(p.getErrorStream());
-                return CommandResponse.error(errorMsg);
-            }
-        } catch (IOException e) {
-            return CommandResponse.error("error creating gradle wrapper for new sketch", e);
-        } catch (InterruptedException e) {
-            return CommandResponse.error("gradle wrapper interrupted", e);
+        final GradleWrapper gradleWrapper = new GradleWrapper(sketchView.getSketchDirectory());
+        final CommandResponse resp = gradleWrapper.run();
+        if(resp.isError()) {
+            return resp;
         }
 
         return CommandResponse.success();
-    }
-
-    private static String readStream(InputStream errorStream) {
-        final StringBuilder out = new StringBuilder();
-        final Scanner s = new Scanner(errorStream);
-        while(s.hasNextLine()) {
-            out.append(s.nextLine() + "\n");
-        }
-        return out.toString();
     }
 
     private void makeFileFromTemplate(String templatePath, String destPath) throws IOException, TemplateException {
@@ -185,6 +170,10 @@ public class Create implements Command {
 
         public String getJavaSketchPath() {
             return getSrcDirectory() + "/" + getJavaSketchFileName();
+        }
+
+        public String getJavaMainPath() {
+            return getSrcDirectory() + "/Main.java";
         }
 
         public String getDataDirectory() {

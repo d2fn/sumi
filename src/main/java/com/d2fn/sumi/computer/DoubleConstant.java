@@ -2,11 +2,11 @@ package com.d2fn.sumi.computer;
 
 import java.util.List;
 
-public class Constant extends Computer {
+public class DoubleConstant extends Computer {
 
     private final double c;
 
-    public Constant(double c) {
+    public DoubleConstant(double c) {
         this.c = c;
     }
 

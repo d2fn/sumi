@@ -1,39 +1,51 @@
 # definitions
-cloud = com.d2fn.sumi.computer.Perlin
+lines  = com.d2fn.sumi.computer.Perlin
+angles = com.d2fn.sumi.computer.Perlin
 xscale = com.d2fn.sumi.computer.Scale
 yscale = com.d2fn.sumi.computer.Scale
-r = com.d2fn.sumi.computer.Remap
-g = com.d2fn.sumi.computer.Remap
-b = com.d2fn.sumi.computer.Remap
+uscale = com.d2fn.sumi.computer.Scale
+vscale = com.d2fn.sumi.computer.Scale
+height = com.d2fn.sumi.computer.Remap
+theta  = com.d2fn.sumi.computer.Remap
+dtheta = com.d2fn.sumi.computer.Delta
 
 # configuration
 # env.blocksize <- 5
 
 # connections
+env.x       -> xscale.value -> lines.x     # configuration
+env.y       -> yscale.value -> lines.y     # configuration
+0                           -> lines.z
 0.0025      -> xscale.coefficient
-env.x       -> xscale.value -> cloud.x
 0.0025      -> yscale.coefficient
-env.y       -> yscale.value -> cloud.y
-0           -> cloud.z
-"BEST"      -> cloud.quality
-1.5         -> cloud.frequency
-2.7         -> cloud.lacunarity
-6           -> cloud.octavecount
-0.3         -> cloud.persistence
-2           -> cloud.seed
-cloud.value -> r.value
--1.0        -> r.domainlo
- 1.0        -> r.domainhi
-0           -> r.rangelo
-255         -> r.rangehi
-cloud.value -> g.value
--1.0        -> g.domainlo
- 1.0        -> g.domainhi
-50          -> g.rangelo
-200         -> g.rangehi
-cloud.value -> b.value
--1.0        -> b.domainlo
- 1.0        -> b.domainhi
-128         -> b.rangelo
-255         -> b.rangehi
+"BEST"      -> lines.quality
+1.5         -> lines.frequency
+1.3         -> lines.lacunarity
+6           -> lines.octavecount
+0.8         -> lines.persistence
+2           -> lines.seed
+lines.value -> height.value
+-1.0        -> height.domainlo
+ 1.0        -> height.domainhi
+2           -> height.rangelo
+30          -> height.rangehi
+"false"     -> height.clamp
+0.25        -> uscale.coefficient
+0.25        -> vscale.coefficient
+env.u       -> uscale.value -> angles.x
+env.v       -> vscale.value -> angles.y
+0                           -> angles.z
+"BEST"      -> angles.quality
+1.9         -> angles.frequency
+2.1         -> angles.lacunarity
+6           -> angles.octavecount
+1.9         -> angles.persistence
+0           -> angles.seed
+-1.0        -> theta.domainlo
+ 1.0        -> theta.domainhi
+-0.4159     -> theta.rangelo
+ 0.4159     -> theta.rangehi
+"true"      -> theta.clamp
+angles.value -> theta.value -> dtheta.value
+
 

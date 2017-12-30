@@ -1,5 +1,6 @@
 apply plugin: 'application'
-mainClassName = 'com.d2fn.sumi.Sumi'
+mainClassName = 'Main'
+archivesBaseName = '${sketchName}'
 version = '0.1'
 
 apply plugin: 'java'

@@ -1,6 +1,11 @@
 package com.d2fn.sumi;
 
+import com.d2fn.sumi.computer.*;
+import com.d2fn.sumi.computer.parser.BusParseException;
+import com.d2fn.sumi.computer.parser.BusParser;
 import com.sampullara.cli.Argument;
+
+import java.util.Map;
 
 public class Example1 extends Sketch {
 
@@ -13,9 +18,9 @@ public class Example1 extends Sketch {
     @Argument(alias = "labely", description = "Y")
     private Integer labelY;
 
-   public void setup() {
-        if(labelX == null) labelX = width/2;
-        if(labelY == null) labelY = height/2;
+    public void setup() {
+        if (labelX == null) labelX = width / 2;
+        if (labelY == null) labelY = height / 2;
     }
 
     @Override
