@@ -1,11 +1,13 @@
 package com.d2fn.sumi.computer;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Scale extends Computer {
 
-    private static final List<String> inputNames = List.of("coefficient", "value");
-    private static final List<String> outputNames = List.of("value");
+    private static final List<String> inputNames = Arrays.asList("coefficient", "value");
+    private static final List<String> outputNames = Collections.singletonList("value");
 
     @Override
     public List<String> getInputNames() {

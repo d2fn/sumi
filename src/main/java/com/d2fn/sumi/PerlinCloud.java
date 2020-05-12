@@ -4,6 +4,7 @@ import com.d2fn.sumi.computer.Bus;
 import com.d2fn.sumi.computer.parser.BusParseException;
 import com.d2fn.sumi.computer.parser.BusParser;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class PerlinCloud extends Sketch {
@@ -17,10 +18,14 @@ public class PerlinCloud extends Sketch {
             final int blockSize = 5;
             for (int x = 0; x < width; x += blockSize) {
                 for (int y = 0; y < height; y += blockSize) {
-                    bus.run(Map.of(
-                            "x", x,
-                            "y", y
-                    ));
+                    Map<String, Object> m = new HashMap<>();
+                    m.put("x", x);
+                    m.put("y", y);
+                    bus.run(m);
+//                    bus.run(Map.of(
+//                            "x", x,
+//                            "y", y
+//                    ));
                     int c = color(
                             bus.pollInt("r", "value"),
                             bus.pollInt("g", "value"),

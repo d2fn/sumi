@@ -2,12 +2,14 @@ package com.d2fn.sumi.computer;
 
 import com.flowpowered.noise.NoiseQuality;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Perlin extends Computer {
 
     private static final List<String> inputNames =
-            List.of(
+            Arrays.asList(
                     // perlin configurations
                     "frequency",
                     "lacunarity",
@@ -20,7 +22,7 @@ public class Perlin extends Computer {
             );
 
     private static final List<String> outputNames =
-            List.of(
+            Collections.singletonList(
                     "value"
             );
 

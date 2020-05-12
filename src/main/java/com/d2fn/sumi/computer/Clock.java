@@ -1,5 +1,6 @@
 package com.d2fn.sumi.computer;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -10,8 +11,8 @@ import java.util.List;
  */
 public class Clock extends Computer {
 
-    private static final List<String> inputNames = List.of("time");
-    private static final List<String> outputNames = List.of("time");
+    private static final List<String> inputNames = Collections.singletonList("time");
+    private static final List<String> outputNames = Collections.singletonList("time");
 
 
     @Override

@@ -1,11 +1,12 @@
 package com.d2fn.sumi.computer;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Delta extends Computer {
 
-    private static final List<String> inputNames  = List.of("value");
-    private static final List<String> outputNames = List.of("value");
+    private static final List<String> inputNames  = Collections.singletonList("value");
+    private static final List<String> outputNames = Collections.singletonList("value");
 
     private Double previousValue;
 

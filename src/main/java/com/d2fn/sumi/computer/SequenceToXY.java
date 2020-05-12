@@ -1,11 +1,12 @@
 package com.d2fn.sumi.computer;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class SequenceToXY extends Computer {
 
-    private static final List<String> inputNames = List.of("sequence", "width", "height");
-    private static final List<String> outputNames = List.of("x", "y");
+    private static final List<String> inputNames = Arrays.asList("sequence", "width", "height");
+    private static final List<String> outputNames = Arrays.asList("x", "y");
 
     @Override
     public List<String> getInputNames() {

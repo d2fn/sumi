@@ -4,7 +4,7 @@ archivesBaseName = '${sketchName}'
 version = '0.1'
 
 apply plugin: 'java'
-sourceCompatibility = 1.9
+sourceCompatibility = 1.8
 
 apply plugin: 'idea'
 

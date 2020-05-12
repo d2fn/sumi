@@ -131,7 +131,7 @@ public class Create implements Command {
 
     private static Configuration buildFtlConfiguration() {
         final Configuration ftlConfig = new Configuration(Configuration.VERSION_2_3_23);
-        final String templatePackagePath = Sumi.class.getPackageName().replace(".", "/");
+        final String templatePackagePath = Sumi.class.getPackage().getName().replace(".", "/");
         ftlConfig.setClassLoaderForTemplateLoading(
                 Sumi.class.getClassLoader(),
                 templatePackagePath

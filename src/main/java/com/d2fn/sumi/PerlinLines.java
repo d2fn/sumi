@@ -25,12 +25,12 @@ public class PerlinLines extends Sketch {
                 pushMatrix();
                 translate(0, y);
                 for(int x = 0; x < width*10; x += xstep) {
-                    bus.run(Map.of(
+                    bus.run(
                             "x", x,
                             "y", y,
                             "u", u,
                             "v", v
-                    ));
+                    );
                     final float height = bus.pollFloat("height", "value");
                     final float starty = -height/2f;
                     final float endy   =  height/2f;

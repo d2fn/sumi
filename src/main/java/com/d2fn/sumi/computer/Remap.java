@@ -2,12 +2,14 @@ package com.d2fn.sumi.computer;
 
 import com.d2fn.sumi.Sketch;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Remap extends Computer {
 
-    private static final List<String> inputNames = List.of("value", "domainlo", "domainhi", "rangelo", "rangehi", "clamp");
-    private static final List<String> outputNames = List.of("value");
+    private static final List<String> inputNames = Arrays.asList("value", "domainlo", "domainhi", "rangelo", "rangehi", "clamp");
+    private static final List<String> outputNames = Collections.singletonList("value");
 
     @Override
     public List<String> getInputNames() {

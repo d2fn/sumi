@@ -22,6 +22,36 @@ public class Bus {
         run(new HashMap<>());
     }
 
+    public void run(String k1, Object v1) {
+        final Map<String, Object> m = new HashMap<>();
+        m.put(k1, v1);
+        run(m);
+    }
+
+    public void run(String k1, Object v1, String k2, Object v2) {
+        final Map<String, Object> m = new HashMap<>();
+        m.put(k1, v1);
+        m.put(k2, v2);
+        run(m);
+    }
+
+    public void run(String k1, Object v1, String k2, Object v2, String k3, Object v3) {
+        final Map<String, Object> m = new HashMap<>();
+        m.put(k1, v1);
+        m.put(k2, v2);
+        m.put(k3, v3);
+        run(m);
+    }
+
+    public void run(String k1, Object v1, String k2, Object v2, String k3, Object v3, String k4, Object v4) {
+        final Map<String, Object> m = new HashMap<>();
+        m.put(k1, v1);
+        m.put(k2, v2);
+        m.put(k3, v3);
+        m.put(k4, v4);
+        run(m);
+    }
+
     public void run(Map<String, Object> parameters) {
         final long time = env.runWithParameters(parameters);
         if(env.inputsReady(time)) {

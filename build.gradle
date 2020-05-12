@@ -3,7 +3,7 @@ mainClassName = 'com.d2fn.sumi.Sumi'
 version = '0.1-SNAPSHOT'
 
 apply plugin: 'java'
-sourceCompatibility = 1.9
+sourceCompatibility = 1.8
 
 apply plugin: 'idea'
 
